@@ -1,6 +1,6 @@
 {
 	"name": "@maserde/ut-client",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"description": "Universitas Terbuka API Client",
 	"main": ".build/index.cjs",
 	"module": ".build/index.esm.js",
@@ -13,7 +13,7 @@
 		"rollup": "rollup -c rollup.config.js",
 		"dev": "tsx --watch ./src/index.ts",
 		"build": "npm run clean && npm run build:tsc && npm run rollup",
-		"postinstall": "npm run build",
+		"prepublish": "npm run build",
 		"test": "jest"
 	},
 	"keywords": [

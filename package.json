@@ -1,6 +1,6 @@
 {
 	"name": "@maserde/ut-client",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"description": "Universitas Terbuka API Client",
 	"main": ".build/index.cjs",
 	"module": ".build/index.esm.js",

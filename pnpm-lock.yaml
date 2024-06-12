@@ -14,6 +14,9 @@ importers:
       cheerio:
         specifier: 1.0.0-rc.12
         version: 1.0.0-rc.12
+      rimraf:
+        specifier: ^5.0.7
+        version: 5.0.7
     devDependencies:
       '@babel/core':
         specifier: ^7.24.7
@@ -51,9 +54,6 @@ importers:
       jest:
         specifier: ^29.7.0
         version: 29.7.0(@types/node@20.14.1)(ts-node@10.9.2(@types/node@20.14.1)(typescript@5.4.5))
-      rimraf:
-        specifier: ^5.0.7
-        version: 5.0.7
       rollup:
         specifier: ^4.18.0
         version: 4.18.0

@@ -20,13 +20,24 @@ const config = [
 			format: "esm",
 			sourcemap: true,
 		},
-		external: ["axios", "cheerio"],
+		external: ["axios", "cheerio", "express"],
 	},
 	{
 		...sharedConfig,
 		plugins: [commonjs(), resolve(), ...sharedConfig.plugins],
 		output: {
 			file: `${outPath}.cjs`,
+			format: "cjs",
+			sourcemap: true,
+			inlineDynamicImports: true,
+		},
+	},
+	{
+		...sharedConfig,
+		input: "./src/server.ts",
+		plugins: [commonjs(), resolve(), ...sharedConfig.plugins],
+		output: {
+			file: `.build/server.cjs`,
 			format: "cjs",
 			sourcemap: true,
 			inlineDynamicImports: true,

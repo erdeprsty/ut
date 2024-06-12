@@ -1,6 +1,6 @@
 {
 	"name": "@maserde/ut-client",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "Universitas Terbuka API Client",
 	"main": ".build/index.cjs",
 	"module": ".build/index.esm.js",
@@ -50,6 +50,7 @@
 	},
 	"dependencies": {
 		"axios": "^1.7.2",
-		"cheerio": "1.0.0-rc.12"
+		"cheerio": "1.0.0-rc.12",
+		"rimraf": "^5.0.7"
 	}
 }

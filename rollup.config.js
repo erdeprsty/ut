@@ -7,7 +7,7 @@ import dts from "rollup-plugin-dts";
 import ts from "typescript";
 import { readFileSync } from "fs";
 
-const outPath = ".build/index";
+const outPath = "dist/index";
 const sharedConfig = {
 	input: "./src/index.ts",
 	plugins: [typescript(), typescriptPaths(), json()],
@@ -34,10 +34,10 @@ const config = [
 	},
 	{
 		...sharedConfig,
-		input: "./src/server.ts",
+		input: "./src/cli.ts",
 		plugins: [commonjs(), resolve(), ...sharedConfig.plugins],
 		output: {
-			file: `.build/server.cjs`,
+			file: `dist/cli.cjs`,
 			format: "cjs",
 			sourcemap: true,
 			inlineDynamicImports: true,

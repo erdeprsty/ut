@@ -2,20 +2,21 @@
 	"name": "@maserde/ut-client",
 	"version": "0.0.7",
 	"description": "Universitas Terbuka API Client",
-	"main": ".build/index.cjs",
-	"module": ".build/index.esm.js",
-	"types": ".build/index.d.ts",
+	"main": "dist/index.cjs",
+	"module": "dist/index.esm.js",
+	"types": "dist/index.d.ts",
 	"type": "module",
 	"private": false,
 	"bin": {
-		"ut-client": ".build/server.cjs"
+		"ut-client": "dist/cli.cjs"
 	},
 	"scripts": {
-		"clean": "rimraf .build",
+		"clean": "rimraf dist",
+		"clean:build": "rimraf dist/.build",
 		"build:tsc": "tsc && tsc-alias",
 		"rollup": "rollup -c rollup.config.js",
 		"dev": "tsx --watch ./src/index.ts",
-		"build": "npm run clean && npm run build:tsc && npm run rollup",
+		"build": "npm run clean && npm run build:tsc && npm run rollup && npm run clean:build",
 		"prepublish": "npm run build",
 		"test": "jest"
 	},

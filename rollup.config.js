@@ -20,7 +20,7 @@ const config = [
 			format: "esm",
 			sourcemap: true,
 		},
-		external: ["axios", "cheerio", "express"],
+		external: ["axios", "cheerio", "express", "commander"],
 	},
 	{
 		...sharedConfig,

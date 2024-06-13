@@ -2,13 +2,10 @@
 import { IELearning, CreateELearningOptions } from "@/interfaces/elearning";
 import ELearning from "@/core/elearning";
 
-export interface IApp {
-	createElearning(options: CreateELearningOptions): IELearning;
-}
+export interface IApp {}
 
 export class App implements IApp {
-	constructor() {}
-	public createElearning(options: CreateELearningOptions = {}) {
+	public createElearning(options: CreateELearningOptions = {}): IELearning {
 		return new ELearning(options);
 	}
 }

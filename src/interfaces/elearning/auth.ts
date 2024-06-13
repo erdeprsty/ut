@@ -1,9 +1,21 @@
 export type ELearningAuthSession = string;
+export type ELearningAuthSessionKey = string;
 
-export interface ELearningLoginResult {
-	session: ELearningAuthSession;
-	key: string;
+export interface IELearningAuth {
+	login(username: string, password: string): Promise<ELearningLoginResult>;
 }
+
+export interface ELearningSessionCredentials {
+	session: ELearningAuthSession;
+	sessionKey: ELearningAuthSessionKey;
+}
+
+export interface ELEarningAccountCredentials {
+	username: string;
+	password: string;
+}
+
+export interface ELearningLoginResult extends ELearningSessionCredentials {}
 
 export interface ELearningGetSessionResult {
 	token: string;
@@ -12,8 +24,4 @@ export interface ELearningGetSessionResult {
 
 export interface ELearningLoginOptions {
 	force: boolean;
-}
-
-export interface IELearningAuth {
-	login(username: string, password: string): Promise<ELearningLoginResult>;
 }

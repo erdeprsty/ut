@@ -1,18 +1,19 @@
-import { ELearningAuthSession } from "./auth";
+import {
+	ELEarningAccountCredentials,
+	ELearningSessionCredentials,
+} from "./auth";
 
 export interface IELearning {
-	session: ELearningAuthSession | null;
+	credentials: Partial<ELearningSessionCredentials>;
+	authenticate: (
+		account: ELEarningAccountCredentials
+	) => Promise<ELearningSessionCredentials>;
 	isEmptySession(): boolean;
 }
 
-export interface ELearningCredential {
-	username: string;
-	password: string;
-}
-
 export interface ELearningOptions {
-	credential: ELearningCredential;
-	session: ELearningAuthSession;
+	credentials: ELearningSessionCredentials;
+	account: ELEarningAccountCredentials;
 }
 
 export interface CreateELearningOptions extends Partial<ELearningOptions> {}

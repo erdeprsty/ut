@@ -1,14 +1,14 @@
 {
-	"name": "@maserde/ut-client",
+	"name": "@maserde/ut",
 	"version": "0.0.7",
-	"description": "Universitas Terbuka API Client",
+	"description": "Universitas Terbuka API",
 	"main": "dist/index.cjs",
 	"module": "dist/index.esm.js",
 	"types": "dist/index.d.ts",
 	"type": "module",
 	"private": false,
 	"bin": {
-		"ut-client": "dist/cli.cjs"
+		"ut-cli": "dist/cli.cjs"
 	},
 	"scripts": {
 		"clean": "rimraf dist",
@@ -21,10 +21,12 @@
 		"test": "jest"
 	},
 	"keywords": [
-		"Universitas Terbuka",
-		"UT",
-		"E-Learning",
-		"ut-client"
+		"ut",
+		"elearning",
+		"education",
+		"university",
+		"universitas terbuka",
+		"open university"
 	],
 	"author": "Ardi Hari Prasetiyo",
 	"license": "ISC",
@@ -56,6 +58,7 @@
 	"dependencies": {
 		"axios": "^1.7.2",
 		"cheerio": "1.0.0-rc.12",
+		"commander": "^12.1.0",
 		"express": "^4.19.2",
 		"rimraf": "^5.0.7"
 	}

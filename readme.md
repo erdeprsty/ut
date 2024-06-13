@@ -1,35 +1,34 @@
-# UT-Client
+# Universitas Terbuka API
 
-Universitas Terbuka API Client
+Universitas Terbuka API - Indonesia Open University API
 
-## Instalasi
-
-Anda dapat menginstal package ini dengan perintah berikut:
+## Installation
 
 ```bash
-  npm install @maserde/ut-client
+  npm install @maserde/ut
 ```
 
 ## Usage/Examples
 
-Anda dapat mengimport library ini sebagai berikut:
+importing package to your project using CommonJS
 
 ```javascript
-const UT = require("@maserde/ut-client");
+const UT = require("@maserde/ut");
 ```
 
-Anda juga dapat mengimport library ini sebagai module menggunakan Ecmascript sebagai berikut:
+importing package to your project using EcmaScript
 
 ```javascript
-import UT from "@maserde/ut-client";
+import UT from "@maserde/ut";
 ```
 
-Contoh penggunaan library untuk authentikasi ke fitur E-Learning Universitas Terbuka
+authenticate E-learning account
 
 ```javascript
-const utClient = new UT();
-const utElearning = utClient.createElearning();
-utElearning.auth("YOUR_USERNAME", "YOUR_PASSWORD").then(() => {
-	console.log(`E-Learning session: ${utElearning.session}, E-Learning key: ${utElearning.sessionKey}`);
+const ut = new UT();
+const elearning = ut.createElearning();
+utElearning.authenticate("YOUR_USERNAME", "YOUR_PASSWORD").then(() => {
+	const { session, sessionKey } = elearning.credentials;
+	console.log(`E-Learning session: ${session}, E-Learning key: ${sessionKey}`);
 });
 ```

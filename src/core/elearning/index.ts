@@ -1,58 +1,49 @@
 // Interfaces
+import { IELearning, CreateELearningOptions } from "@/interfaces/elearning";
 import {
-	IELearning,
-	ELearningCredential,
-	CreateELearningOptions,
-} from "@/interfaces/elearning";
-import {
-	ELearningAuthSession,
+	ELEarningAccountCredentials,
+	ELearningSessionCredentials,
 	IELearningAuth,
 } from "@/interfaces/elearning/auth";
-import { IELearningCourse } from "@/interfaces/elearning/course";
 
 // Classes
 import Auth from "@/core/elearning/auth";
-import Course from "@/core/elearning/course";
 
 export class ELearning implements IELearning {
-	public session: ELearningAuthSession | null = null;
-	public sessionKey: string | null = null;
+	public credentials: Partial<ELearningSessionCredentials> = {
+		session: undefined,
+		sessionKey: undefined,
+	};
 	private auth: IELearningAuth;
-	private course: IELearningCourse;
-	private credential: ELearningCredential = {
+	private account: ELEarningAccountCredentials = {
 		username: "",
 		password: "",
 	};
 	constructor(options: CreateELearningOptions = {}) {
 		this.auth = new Auth();
-		this.course = new Course();
-		if (options.session) {
-			this.session = options.session;
+		if (options.credentials) {
+			this.credentials = options.credentials;
 		}
-		if (options.credential) {
-			this.credential.username = options.credential.username;
-			this.credential.password = options.credential.password;
+		if (options.account) {
+			this.account.username = options.account.username;
+			this.account.password = options.account.password;
 		}
 	}
 	public isEmptySession() {
-		return this.session === null;
+		return !(this.credentials.session || this.credentials.sessionKey);
 	}
 	public async authenticate(
-		credentials: ELearningCredential = {
-			username: this.credential.username,
-			password: this.credential.password,
+		account: ELEarningAccountCredentials = {
+			username: this.account.username,
+			password: this.account.password,
 		}
-	): Promise<IELearning> {
-		const { session, key } = await this.auth.login(
-			credentials.username,
-			credentials.password
+	): Promise<ELearningSessionCredentials> {
+		const credentials = await this.auth.login(
+			account.username,
+			account.password
 		);
-		this.session = session;
-		this.sessionKey = key;
-		return Promise.resolve(this);
-	}
-	public async getCourses() {
-		return this.course.getCourses();
+		this.credentials = credentials;
+		return Promise.resolve(credentials);
 	}
 }
 
